@@ -25,13 +25,7 @@ class TaxModel():
             if self.selectedItem[item]['type'] in exempt:
                 typeEf = 0
             tax1 = self.taxDet(self.selectedItem[item]['price'], 0.1, typeEf)
-            # tax1 = taxDet(self.selectedItem[item]['price']*typeEf*0.1)*100
-            # if np.floor(tax1) % 5 != 0:
-            #     tax1 = (np.floor(tax1) + (5 - np.floor(tax1) % 5))
             tax2 = self.taxDet(self.selectedItem[item]['price'], 0.05, self.selectedItem[item]['imported'])
-            # tax2 = self.selectedItem[item]['price']*self.selectedItem[item]['imported']*0.05*100
-            # if np.floor(tax2) % 5 != 0:
-            #     tax2 = (np.floor(tax2) + (5 - np.floor(tax2) % 5))
             tax = (tax1 + tax2)/100
             self.selectedItem[item]['tax'] = round(tax*self.selectedItem[item]['count'],2)
             self.selectedItem[item]['wholePrice'] = round((self.selectedItem[item]['price'] + tax)*self.selectedItem[item]['count'],2)
